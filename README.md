@@ -11,14 +11,14 @@ _Desarrollo y solución del laboratorio 2_
 ### Parte I 
 1. Revise el programa “primos concurrentes” (en la carpeta parte1), dispuesto en el paquete edu.eci.arsw.primefinder. Este es un programa que calcula los números primos entre dos intervalos, distribuyendo la búsqueda de los mismos entre hilos independientes. Por ahora, tiene un único hilo de ejecución que busca los primos entre 0 y 30.000.000. Ejecútelo, abra el administrador de procesos del sistema operativo, y verifique cuantos núcleos son usados por el mismo.
 
-![Screenshot](img/1hilo.png)
+![Screenshot](img/media/1hilo.png)
 
 Al ejecutar el programa y mirar en el profiler la sección de Threads, se pudo ver que se estan utilizando 8, hay en espera 3 y 1 en estado park.
 
 
 2. Modifique el programa para que, en lugar de resolver el problema con un solo hilo, lo haga con tres, donde cada uno de éstos hará la tarcera parte del problema original. Verifique nuevamente el funcionamiento, y nuevamente revise el uso de los núcleos del equipo.
 
-![Screenshot](img/3Hilos.png)
+![Screenshot](img/media/3Hilos.png)
 
 Al realizarlo con tres hilos, se pudo ver se utilizaron 10, 3 en espera y uno en estado de park. Entre los utilizados 3 variaron entre el esado running y monitor.
 
