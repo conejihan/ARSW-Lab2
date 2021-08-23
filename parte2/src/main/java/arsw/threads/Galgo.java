@@ -10,6 +10,7 @@ public class Galgo extends Thread {
 	private int paso;
 	private Carril carril;
 	RegistroLlegada regl;
+	private boolean stop;
 
 	public Galgo(Carril carril, String name, RegistroLlegada reg) {
 		super(name);
@@ -19,10 +20,18 @@ public class Galgo extends Thread {
 	}
 
 	public void corra() throws InterruptedException {
+		synchronized (carril) {
 		while (paso < carril.size()) {			
-			Thread.sleep(100);
-			carril.setPasoOn(paso++);
-			carril.displayPasos(paso);
+			
+				Thread.sleep(100);
+				synchronized(this) {
+					while(stop) {
+						this.wait();
+					}
+				}
+
+				carril.setPasoOn(paso++);
+				carril.displayPasos(paso);}
 			
 			if (paso == carril.size()) {						
 				carril.finish();
@@ -34,10 +43,16 @@ public class Galgo extends Thread {
 				}
 				
 			}
+			
 		}
 	}
 
-
+	public synchronized void stop(boolean stop) {
+		this.stop = stop;
+		if(!stop) {
+			this.notifyAll();
+		}
+	}
 	@Override
 	public void run() {
 		
