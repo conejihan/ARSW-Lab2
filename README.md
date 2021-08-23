@@ -1,4 +1,4 @@
-# Laboratorio 1
+# Laboratorio 2
 
 _Desarrollo y solución del laboratorio 2_
 
